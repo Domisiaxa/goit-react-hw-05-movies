@@ -1,42 +1,44 @@
-import { fetchMoviesCredits } from '../fetchMoviesApi';
-import { useParams } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import { CastList, Name, Role } from './Cast.styled';
+import styles from './Cast.module.css';
+import PropTypes from 'prop-types';
 
-const Cast = () => {
-  const { movieId } = useParams();
-  const [{ cast }, setCastInfo] = useState([]);
-
-  useEffect(() => {
-    fetchMoviesCredits(movieId).then(res => setCastInfo(res));
-  }, [movieId]);
-
-  if (!cast) return;
-
+export const Cast = ({ cast, movieId }) => {
   return (
-    <CastList>
-      {cast.map(el => (
-        <li key={el.id}>
-          <img
-            src={
-              el.profile_path
-                ? `https://image.tmdb.org/t/p/w500${el.profile_path}`
-                : 'https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg'
-            }
-            alt={el.name}
-            width="200"
-            height="300"
-          />
-          <Name>
-            Name: <Role>{el.name}</Role>
-          </Name>
-          <Name>
-            Character: <Role>{el.character}</Role>
-          </Name>
+    <ul className={styles.list}>
+      {cast.map((el, index) => (
+        <li className={styles.box} key={`${movieId}r${index + 1}`}>
+          {el.profile_path ? (
+            <img
+              className={styles.img}
+              src={`https://image.tmdb.org/t/p/w500${el.profile_path}`}
+              alt={`${el.name}`}
+              width={150}
+            />
+          ) : (
+            <img
+              className={styles.img}
+              src={
+                'https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg'
+              }
+              alt={`${el.name}`}
+              width={150}
+              height={225}
+            />
+          )}
+          <h4 className={styles.name}>Name: {el.name}</h4>
+          <p className={styles.role}>Character: {el.character}</p>
         </li>
       ))}
-    </CastList>
+    </ul>
   );
 };
 
-export default Cast;
+Cast.propTypes = {
+  cast: PropTypes.arrayOf(
+    PropTypes.shape({
+      profile_path: PropTypes.string,
+      name: PropTypes.string.isRequired,
+      character: PropTypes.string.isRequired,
+    }).isRequired
+  ).isRequired,
+  movieId: PropTypes.string.isRequired,
+};

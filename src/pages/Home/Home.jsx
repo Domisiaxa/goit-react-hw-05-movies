@@ -1,18 +1,30 @@
-import { fetchTrendingMovies } from 'components/fetchMoviesApi';
-import { useState, useEffect } from 'react';
-import MovieList from 'components/MovieList';
-import { useLocation } from 'react-router-dom';
+import { MovieList } from 'components/MovieList/MovieList';
+import { getTrending } from 'services/api';
+import { useEffect, useState } from 'react';
+import styles from './Home.module.css';
+import { Spinner } from 'components/Spinner/Spinner';
 
 const Home = () => {
-  const [movieList, setMovieList] = useState([]);
-  const location = useLocation();
+  const [isLoading, setIsLoading] = useState(false);
+  const [trendingList, setTrendingList] = useState([]);
+
+  const getTrendingList = async () => {
+    setIsLoading(true);
+    const movies = await getTrending();
+    setTrendingList(movies.data.results);
+    setIsLoading(false);
+  };
 
   useEffect(() => {
-    const responce = fetchTrendingMovies();
-    responce.then(res => setMovieList(res));
+    getTrendingList();
   }, []);
-
-  return <MovieList movies={movieList} state={{ from: location }} />;
+  return (
+    <>
+      <h2 className={styles.heading}>Trending Movies</h2>
+      <MovieList list={trendingList} />
+      {isLoading && <Spinner />}
+    </>
+  );
 };
 
 export default Home;

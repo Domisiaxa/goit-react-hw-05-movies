@@ -1,0 +1,22 @@
+.nav {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  margin: 20px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.header {
+  height: 50px;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  border: 1px solid rgb(188, 188, 188);
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 8px 3px;
+}

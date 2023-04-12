@@ -1,0 +1,15 @@
+.link {
+  text-decoration: none;
+  line-height: 1.5;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  color: black;
+}
+
+.link:hover,
+.link:focus {
+  color: rgb(204, 37, 176);
+  font-weight: 600;
+}

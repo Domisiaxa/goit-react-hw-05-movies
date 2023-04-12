@@ -1,47 +1,25 @@
-import { useLocation } from 'react-router-dom';
-import {
-  Element,
-  FilmImage,
-  FilmLink,
-  List,
-  ListTitle,
-  CardWraper,
-  FilmTitle,
-  ListWraper,
-} from './MovieList.styled';
+import { ListItem } from 'components/ListItem/ListItem';
+import styles from './MovieList.module.css';
+import PropTypes from 'prop-types';
 
-const MovieList = ({ movies }) => {
-  const location = useLocation();
-  if (movies.length === 1) return;
-
+export const MovieList = ({ list }) => {
   return (
-    <List>
-      <ListTitle>Trending Movies</ListTitle>
-      <ListWraper>
-        {movies.map(el => (
-          <Element key={el.id}>
-            <CardWraper>
-              <FilmLink
-                to={`/goit-react-hw-05-movies/movies/${el.id}`}
-                state={{ from: location }}
-              >
-                <FilmImage
-                  src={
-                    el.poster_path
-                      ? `https://image.tmdb.org/t/p/w500${el.poster_path}`
-                      : 'https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg'
-                  }
-                  alt=""
-                  width="40"
-                />
-                <FilmTitle>{el.title}</FilmTitle>
-              </FilmLink>
-            </CardWraper>
-          </Element>
-        ))}
-      </ListWraper>
-    </List>
+    <>
+      <ul className={styles.list}>
+        <p className={styles.heading}>🎬</p>
+        {list.map(el => {
+          return <ListItem key={el.id} id={el.id} title={el.title} />;
+        })}
+      </ul>
+    </>
   );
 };
 
-export default MovieList;
+MovieList.propTypes = {
+  list: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+    }).isRequired
+  ).isRequired,
+};

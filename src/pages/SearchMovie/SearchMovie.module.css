@@ -1,0 +1,32 @@
+.form {
+  margin: 15px;
+  text-align: center;
+}
+
+.btn {
+  margin-left: 5px;
+  cursor: pointer;
+  min-width: 100px;
+  font-size: 18px;
+  padding: 5px;
+  background-color: rgb(255, 255, 255);
+  color: rgb(204, 37, 176);
+  border: 1px solid black;
+  border-radius: 0px 6px 6px 0px;
+  cursor: pointer;
+  transition: background-color 250ms linear 0s, color 300ms linear 0s;
+}
+
+.btn:hover {
+  background-color: rgb(204, 37, 176);
+  color: white;
+  border: 1px solid rgb(204, 37, 176);
+}
+.input {
+  font-size: 18px;
+  padding: 5px 0px 5px 15px;
+  border-radius: 6px 0px 0px 6px;
+  background-color: rgb(255, 255, 255);
+  width: 300px;
+  border: 1px solid;
+}
