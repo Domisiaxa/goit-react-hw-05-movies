@@ -9,14 +9,14 @@ const StyledLink = styled(NavLink)`
   padding: 4px 15px;
   border-radius: 5px;
   font-size: 13px;
-  color: white;
   text-align: center;
   text-decoration: none;
   background-color: rgb(23, 156, 68);
   &.active,
   &:hover,
   &:focus {
-    background-color: rgb(156, 23, 52);
+    background-color: #47a1f5;
+    color: white;
   }
 `;
 

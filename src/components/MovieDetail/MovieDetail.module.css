@@ -25,10 +25,10 @@
   padding: 4px 15px;
   border-radius: 5px;
   font-size: 13px;
-  color: white;
+  color: black;
   text-align: center;
   text-decoration: none;
-  background-color: rgb(23, 156, 68);
+  background-color: #baddff;
 }
 
 @media screen and (min-width: 720px) {
