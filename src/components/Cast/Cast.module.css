@@ -4,7 +4,8 @@
   flex-direction: row;
   flex-wrap: wrap;
   gap: 15px;
-  padding-left: 25px;
+  padding: 10px;
+  justify-content: center;
 }
 
 .img {

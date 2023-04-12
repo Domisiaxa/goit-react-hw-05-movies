@@ -31,8 +31,6 @@
   background-color: #baddff;
 }
 
-@media screen and (min-width: 720px) {
-  .infoBox {
-    flex-direction: row;
-  }
-} ;
+.div {
+  border-bottom: 1px solid rgb(170, 170, 170);
+}

@@ -43,7 +43,7 @@ export const MovieDetail = ({
           <p>{genres}</p>
         </div>
       </div>
-      <div>
+      <div className={styles.div}>
         <h3>Additional information:</h3>
         <ul className={styles.subNav}>
           <li>
